@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.function.Consumer;
 
 /** 
  * MIT License
@@ -107,16 +108,16 @@ public class App {
      * @param tamanho Tamanho do vetor a ser criado.
      * @return Vetor com dados aleatórios, com valores entre 1 e (tamanho/2), desordenado.
      */
-    public static void marcarTempo(int[] vetor){
+    public static void marcarTempo(int[] vetor, Consumer funcao){
         long inicio = System.nanoTime();
-            codigo3(vetor);
+            funcao.accept(vetor);
         duracao = (System.nanoTime()-inicio) * nanoToMilli;
 
 
     }
  
-    public static String executarTeste(int[] vetor){
-        marcarTempo(vetor);
+    public static String executarTeste(int[] vetor, Consumer funcao){
+        marcarTempo(vetor, funcao);
         return String.format("Tamanho: %,2d | Operações: %,2d\n | Tempo: %,2f ms", 
                     vetor.length, operacoes, duracao);
 
@@ -130,12 +131,14 @@ public class App {
         
     }
     public static void main(String[] args) {
-        int[] tamanhosTeste = tamanhosTestePequeno;
+        int[] tamanhosTeste = tamanhosTesteGrande;
+        Consumer<int[]> funcao = App::codigo1;
         for (int i = 0; i < tamanhosTeste.length; i++){
-            int[] vetorDados = gerarVetor(tamanhosTeste[i]);
-            System.out.println(executarTeste(vetorDados));
-        }
+            int[] vetor = gerarVetor(tamanhosTeste[i]);
+            executarTeste(vetor, funcao);
+            funcao = App::codigo2;
+            executarTeste(vetor, funcao);
 
-        
+        }
     }
 }
