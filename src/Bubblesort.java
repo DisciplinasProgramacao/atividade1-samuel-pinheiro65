@@ -1,5 +1,6 @@
-import java.lang.reflect.Array;
-import java.util.*;;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 
 public class Bubblesort<T extends Comparable<T>> 
         implements IOrdenador<T> {
@@ -10,7 +11,7 @@ public class Bubblesort<T extends Comparable<T>>
 
     @Override
     public T[] ordenar(int[] vetor) {
-        T[] copiaDados = Array.copyOf(vetor, vetor.length);
+        T[] copiaDados = Arrays.copyOf(vetor, vetor.length);
         int tamanho = copiaDados.length;
         comparacoes = movimentacoes = 0;
         for (int posReferencia = tamanho-1; posReferencia > 0; posReferencia--){
@@ -25,9 +26,10 @@ public class Bubblesort<T extends Comparable<T>>
     }
 
     private void trocar(int p1, int p2, T[] dados){
-        movimentacoes+=1
-        T temp = dados
-
+        movimentacoes+=3;
+        T temp = dados[p1];
+        dados[p1] = dados[p2];
+        dados[p2] = temp;
     }
 
     @Override

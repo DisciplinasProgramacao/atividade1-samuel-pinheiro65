@@ -18,13 +18,24 @@ static int[] gerarVetor(int tamanho){
 
 public static void main(String[] args){
     int[] vetor = gerarVetor(50);
-    Bubblesort<Integer> ordenador = new Bubblesort<Integer>();
+    IOrdenador Bubblesort<Integer> ordenador = new Bubblesort<Integer>();
+    IOrdenador Insercao<Integer> ordenador = new Insercao<Integer>();
     Integer[] vetorOrdenado = ordenador.ordenar(vetor);
 
     
 
+    System.out.println("Bolha");
+    System.out.println(vetor.length);
+    ordenador = new Bubblesort<Integer>();
+    System.out.println(ordenador.getComparacoes());
+    System.out.println(ordenador.getMovimentacoes());
+    System.out.println(ordenador.getTempoOrdenacao());
+
+    System.out.println("Insercao");
+    ordenador = new Insercao<Integer>();
     System.out.println(vetor.length);
     System.out.println(ordenador.getComparacoes());
     System.out.println(ordenador.getMovimentacoes());
+    System.out.println(ordenador.getTempoOrdenacao());
 }
 }
