@@ -2,10 +2,7 @@ import java.util.Random;
 
 public class AppOrdenacoes {
 
-    
-
-
-static Random aleatorio = new Random(42);
+    static Random aleatorio = new Random(42);
 
 static int[] gerarVetor(int tamanho){
     int[] vetor = new int[tamanho];
@@ -20,6 +17,7 @@ public static void main(String[] args){
     int[] vetor = gerarVetor(50);
     IOrdenador Bubblesort<Integer> ordenador = new Bubblesort<Integer>();
     IOrdenador Insercao<Integer> ordenador = new Insercao<Integer>();
+    IOrdenador Insercao<Integer> ordenador = new Mergesort<Integer>();
     Integer[] vetorOrdenado = ordenador.ordenar(vetor);
 
     
@@ -33,6 +31,13 @@ public static void main(String[] args){
 
     System.out.println("Insercao");
     ordenador = new Insercao<Integer>();
+    System.out.println(vetor.length);
+    System.out.println(ordenador.getComparacoes());
+    System.out.println(ordenador.getMovimentacoes());
+    System.out.println(ordenador.getTempoOrdenacao());
+
+    System.out.println("Mergesort");
+    ordenador = new Mergesort<Integer>();
     System.out.println(vetor.length);
     System.out.println(ordenador.getComparacoes());
     System.out.println(ordenador.getMovimentacoes());
